@@ -3,7 +3,17 @@
 @inherits PanelComponent
 
 <root>
-	<div>@Player.Health HP</div>
+	<div class="vitals">
+		<p>@Player.Health HP</p>
+	</div>
+
+	<div class="bars">
+		<div class="healthbar">
+				<div class="inner">
+					<div class="fill" style="width: @(Player.Health / Player.MaxHealth * 100f)%"</div>
+				</div>
+		</div>
+	</div>
 </root>
 
 @code
@@ -11,7 +21,8 @@
 
 	[Property] UnitInfo Player { get; set; }
 
-	//[Property] UnitInfo Unit { get; set; }
-
-	protected override int BuildHash() => System.HashCode.Combine( "" );
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine("");
+	}
 }

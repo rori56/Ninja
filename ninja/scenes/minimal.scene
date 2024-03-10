@@ -51,7 +51,6 @@
         {
           "__type": "ModelRenderer",
           "BodyGroups": 18446744073709551615,
-          "MaterialGroup": null,
           "MaterialOverride": "materials/default.vmat",
           "Model": "models/dev/plane.vmdl",
           "RenderType": "On",
@@ -62,16 +61,14 @@
           "Center": "0,0,-5",
           "IsTrigger": false,
           "Scale": "99.99989,99.99998,10",
-          "Static": false,
-          "Surface": null
+          "Static": false
         },
         {
           "__type": "BoxCollider",
           "Center": "0,0,-5",
           "IsTrigger": false,
           "Scale": "100,100,8.29993",
-          "Static": false,
-          "Surface": null
+          "Static": false
         }
       ]
     },
@@ -86,7 +83,6 @@
         {
           "__type": "ModelRenderer",
           "BodyGroups": 18446744073709551615,
-          "MaterialGroup": null,
           "MaterialOverride": "materials/default.vmat",
           "Model": "models/dev/box.vmdl",
           "RenderType": "On",
@@ -97,8 +93,7 @@
           "Center": "0,0,0",
           "IsTrigger": false,
           "Scale": "50,50,50",
-          "Static": false,
-          "Surface": null
+          "Static": false
         },
         {
           "__type": "Rigidbody",
@@ -126,12 +121,9 @@
       "Components": [
         {
           "__type": "SkinnedModelRenderer",
-          "AnimationGraph": null,
           "BodyGroups": 341,
-          "BoneMergeTarget": null,
           "CreateBoneObjects": false,
           "MaterialGroup": "default",
-          "MaterialOverride": null,
           "Model": "models/citizen/citizen.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
@@ -149,15 +141,9 @@
         {
           "__type": "CitizenAnimationHelper",
           "BodyWeight": 1,
-          "EyeSource": null,
           "EyesWeight": 1,
           "HeadWeight": 1,
           "Height": 1,
-          "IkLeftFoot": null,
-          "IkLeftHand": null,
-          "IkRightFoot": null,
-          "IkRightHand": null,
-          "LookAt": null,
           "LookAtEnabled": false,
           "Target": {
             "_type": "component",
@@ -200,8 +186,7 @@
           "__type": "ModelCollider",
           "IsTrigger": false,
           "Model": "models/citizen/citizen.vmdl",
-          "Static": false,
-          "Surface": null
+          "Static": false
         }
       ],
       "Children": [
@@ -280,12 +265,9 @@
       "Components": [
         {
           "__type": "SkinnedModelRenderer",
-          "AnimationGraph": null,
           "BodyGroups": 341,
-          "BoneMergeTarget": null,
           "CreateBoneObjects": false,
           "MaterialGroup": "default",
-          "MaterialOverride": null,
           "Model": "models/citizen/citizen.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
@@ -303,15 +285,9 @@
         {
           "__type": "CitizenAnimationHelper",
           "BodyWeight": 1,
-          "EyeSource": null,
           "EyesWeight": 1,
           "HeadWeight": 1,
           "Height": 1,
-          "IkLeftFoot": null,
-          "IkLeftHand": null,
-          "IkRightFoot": null,
-          "IkRightHand": null,
-          "LookAt": null,
           "LookAtEnabled": false,
           "Target": {
             "_type": "component",
@@ -323,13 +299,10 @@
           "__type": "ModelCollider",
           "IsTrigger": false,
           "Model": "models/citizen/citizen.vmdl",
-          "Static": false,
-          "Surface": null
+          "Static": false
         },
         {
           "__type": "Bot",
-          "Animator": null,
-          "Controller": null,
           "EyePosition": "0,0,0",
           "JumpStrengh": 400,
           "PunchCooldown": 0.5,
@@ -392,6 +365,6 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-10T04:53:06.5694926\u002B01:00",
+  "LastSaved": "2024-03-10T13:59:12.6802472\u002B01:00",
   "__references": []
 }
