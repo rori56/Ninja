@@ -1,0 +1,17 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	<div>@Player.Health HP</div>
+</root>
+
+@code
+{
+
+	[Property] UnitInfo Player { get; set; }
+
+	//[Property] UnitInfo Unit { get; set; }
+
+	protected override int BuildHash() => System.HashCode.Combine( "" );
+}
