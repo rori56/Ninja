@@ -1,5 +1,4 @@
-Hud 
-{
+Hud {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -8,10 +7,9 @@ Hud
 	font-family: Poppins;
 	font-size: 24px;
 
-	> .vitals 
-	{
+	> .vitals {
 		position: absolute;
-		bottom: 128px;
+		bottom: 144px;
 		left: 32px;
 		font-size: 64px;
 		font-weight: bold;
@@ -19,33 +17,46 @@ Hud
 		color: white;
 	}
 
-	> .bars 
-	{
+	> .bars {
 		position: absolute;
 		bottom: 32px;
 		left: 32px;
+		flex-direction: column;
 
-		> .healthbar
-		{
-				width: 500px;
-				height: 64px;
-				background-color: rgb(41,41,41);
-				padding: 8px;
+		> .manabar {
+			width: 375px;
+			height: 48;
+			margin-top: 8px; /* positionnement plus bas */
+			background-color: rgb(41, 41, 41);
+			padding: 8px;
 
-				> .inner
-				{
-					background-color: rgb(46,46,46);
-					flex-grow: 1;
 
-					> .fill
-					{
+			> .inner {
+				background-color: rgb(46, 46, 46);
+				flex-grow: 1;
 
-					}
+				> .fill {
+					height: 100%;
+					background-color: blue; /* Couleur de la barre de mana */
 				}
+			}
+		}
+
+		> .healthbar {
+			width: 500px;
+			height: 64px;
+			background-color: rgb(41,41,41);
+			padding: 8px;
+
+			> .inner {
+				background-color: rgb(46,46,46);
+				flex-grow: 1;
+
+				> .fill {
+					height: 100%;
+					background-color: red;
+				}
+			}
 		}
 	}
 }
-
-
-
-

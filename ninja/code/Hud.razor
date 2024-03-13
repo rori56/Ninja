@@ -4,7 +4,7 @@
 
 <root>
 	<div class="vitals">
-		<p>@Player.Health HP</p>
+		<p>@Player.Health</p>
 	</div>
 
 	<div class="bars">
@@ -13,7 +13,13 @@
 					<div class="fill" style="width: @(Player.Health / Player.MaxHealth * 100f)%"</div>
 				</div>
 		</div>
+		<div class="manabar">
+			<div class="inner">
+				<div class="fill" style="width: @(Player.Mana / Player.MaxMana * 100f)%"</div>
+			</div>
+		</div>
 	</div>
+
 </root>
 
 @code
@@ -23,6 +29,7 @@
 
 	protected override int BuildHash()
 	{
-		return System.HashCode.Combine("");
+		return System.HashCode.Combine( Player.Health, Player.Mana );
 	}
+
 }

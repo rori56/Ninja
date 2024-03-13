@@ -5,8 +5,11 @@ using System.Reflection;
 
 
 
-public sealed class Bot : Component
+public sealed class Test2 : Component
 {
+
+	public Rigidbody rb;
+
 	// attacher camera
 	[Property]
 	[Category( "Components" )]
@@ -82,13 +85,13 @@ public sealed class Bot : Component
 	protected override void OnUpdate()
 	{
 		base.OnUpdate();
-		/*		EyeAngles += Input.AnalogLook;
-				EyeAngles = EyeAngles.WithPitch( MathX.Clamp( EyeAngles.pitch, -80f, 80f ) );
-				Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
+/*		EyeAngles += Input.AnalogLook;
+		EyeAngles = EyeAngles.WithPitch( MathX.Clamp( EyeAngles.pitch, -80f, 80f ) );
+		Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
 
-				if ( Camera != null )
-					Camera.Transform.Local = _initialCameraTransform.RotateAround( EyePosition, EyeAngles.WithYaw( 0f ) );
-		*/
+		if ( Camera != null )
+			Camera.Transform.Local = _initialCameraTransform.RotateAround( EyePosition, EyeAngles.WithYaw( 0f ) );
+*/
 
 	}
 
@@ -96,7 +99,7 @@ public sealed class Bot : Component
 	{
 		base.OnFixedUpdate();
 
-		if ( Controller == null ) return;
+/*		if ( Controller == null ) return;
 
 		var wishSpeed = Input.Down( "Run" ) ? RunSpeed : WalkSpeed;
 		var wishVelocity = Input.AnalogMove.Normal * wishSpeed * Transform.Rotation;
@@ -150,14 +153,12 @@ public sealed class Bot : Component
 
 		if ( Input.Pressed( "attack1" ) && _LastPunch >= PunchCooldown && slot == 2 )
 			Sword();
-	}
+	*/}
 
 	protected override void OnStart()
 	{
-		if ( Camera != null )
-			_initialCameraTransform = Camera.Transform.Local;
-
-
+		//base.OnStart();
+		
 	}
 
 	// Main nue SLOT 1

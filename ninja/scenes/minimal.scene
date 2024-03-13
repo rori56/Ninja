@@ -7,6 +7,7 @@
       "Rotation": "-0.0729315,0.4822396,0.1305433,0.8631827",
       "Tags": "light_directional,light",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "DirectionalLight",
@@ -23,6 +24,7 @@
       "Name": "2D Skybox",
       "Tags": "skybox",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "SkyBox2D",
@@ -47,6 +49,7 @@
       "Name": "Plane",
       "Scale": "5.111068,5,5",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "ModelRenderer",
@@ -75,10 +78,11 @@
     {
       "Id": "3c2490ef-54a0-49bb-8f13-490e40aa51d1",
       "Name": "Cube",
-      "Position": "21.4168,74.1244,150.6701",
+      "Position": "-44.82336,166.8376,59.19331",
       "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
-      "Scale": "0.5632889,0.5632889,0.5632889",
+      "Scale": "5.502284,0.5632889,2.169432",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "ModelRenderer",
@@ -111,13 +115,16 @@
       "Id": "624c9f80-169c-4904-9028-ab6ce1753dbe",
       "Name": "Object",
       "Position": "270.8246,-157.3278,260.7148",
-      "Enabled": true
+      "Enabled": true,
+      "NetworkMode": 2
     },
     {
       "Id": "9efe6cbd-5d8a-496f-8775-d5dc13dae34b",
       "Name": "Player",
-      "Position": "0,0,5.632931",
+      "Position": "0,0,40.51105",
+      "Tags": "player",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "SkinnedModelRenderer",
@@ -158,6 +165,10 @@
             "go": "9efe6cbd-5d8a-496f-8775-d5dc13dae34b",
             "component_type": "CitizenAnimationHelper"
           },
+          "bullet": {
+            "_type": "gameobject",
+            "go": "e93d1517-f170-4373-ada6-93de8d271396"
+          },
           "Camera": {
             "_type": "gameobject",
             "go": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a"
@@ -170,16 +181,24 @@
           "EyePosition": "0,0,60.39994",
           "JumpStrengh": 400,
           "PunchCooldown": 0.5,
-          "PunchRange": 130,
+          "PunchRange": 50,
           "PunchStrengh": 1,
           "RunSpeed": 250,
+          "Unit": {
+            "_type": "component",
+            "go": "9efe6cbd-5d8a-496f-8775-d5dc13dae34b",
+            "component_type": "UnitInfo"
+          },
           "WalkSpeed": 120
         },
         {
           "__type": "UnitInfo",
-          "HealthRegenAmount": 0.5,
+          "HealthRegenAmount": 1,
           "HealthRegenTimer": 3,
-          "MaxHealth": 5,
+          "ManaRegenAmount": 20,
+          "ManaRegenTimer": 4,
+          "MaxHealth": 100,
+          "MaxMana": 200,
           "Team": "Player"
         },
         {
@@ -196,6 +215,7 @@
           "Position": "-189.3463,0,126.7318",
           "Rotation": "0.00000003902482,0.1693495,0.00000001401043,0.9855561",
           "Enabled": true,
+          "NetworkMode": 2,
           "Components": [
             {
               "__type": "CameraComponent",
@@ -257,14 +277,15 @@
       ]
     },
     {
-      "Id": "a2c2bf51-8c2a-417c-ade0-a6f6968422ff",
-      "Name": "Player (1)",
-      "Position": "81.32811,0,5.632931",
-      "Rotation": "0,0,1,0.0000001947072",
+      "Id": "8d2b0890-8eb1-4879-afc2-268d32edf522",
+      "Name": "Bot",
+      "Position": "83.43043,0,30.70387",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "SkinnedModelRenderer",
+          "AnimationGraph": "models/citizen/citizen.vanmgrph",
           "BodyGroups": 341,
           "CreateBoneObjects": false,
           "MaterialGroup": "default",
@@ -291,7 +312,7 @@
           "LookAtEnabled": false,
           "Target": {
             "_type": "component",
-            "go": "a2c2bf51-8c2a-417c-ade0-a6f6968422ff",
+            "go": "8d2b0890-8eb1-4879-afc2-268d32edf522",
             "component_type": "SkinnedModelRenderer"
           }
         },
@@ -302,7 +323,12 @@
           "Static": false
         },
         {
-          "__type": "Bot",
+          "__type": "Test2",
+          "Animator": {
+            "_type": "component",
+            "go": "8d2b0890-8eb1-4879-afc2-268d32edf522",
+            "component_type": "CitizenAnimationHelper"
+          },
           "EyePosition": "0,0,0",
           "JumpStrengh": 400,
           "PunchCooldown": 0.5,
@@ -313,7 +339,7 @@
         },
         {
           "__type": "UnitInfoBot",
-          "MaxHealth": 5,
+          "MaxHealth": 100,
           "Team": "None"
         }
       ]
@@ -323,6 +349,7 @@
       "Name": "Screen",
       "Position": "150.561,-13.28921,12.88091",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "ScreenPanel",
@@ -338,6 +365,204 @@
             "go": "9efe6cbd-5d8a-496f-8775-d5dc13dae34b",
             "component_type": "UnitInfo"
           }
+        }
+      ]
+    },
+    {
+      "Id": "e93d1517-f170-4373-ada6-93de8d271396",
+      "Name": "bullet",
+      "Scale": "0.1,0.1,0.1",
+      "Tags": "bullet,particles",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/sphere.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "SphereCollider",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Radius": 30,
+          "Static": false
+        },
+        {
+          "__type": "Rigidbody",
+          "AngularDamping": 0,
+          "Gravity": false,
+          "LinearDamping": 0,
+          "Locking": {},
+          "MassOverride": 0,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        },
+        {
+          "__type": "Bulletconfig",
+          "bulletRigid": {
+            "_type": "component",
+            "go": "e93d1517-f170-4373-ada6-93de8d271396",
+            "component_type": "Rigidbody"
+          },
+          "bulletSpeed": 500,
+          "Camera": {
+            "_type": "gameobject",
+            "go": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a"
+          }
+        }
+      ],
+      "Children": [
+        {
+          "Id": "c6504840-75a4-4ca4-ac1b-fe74efb93112",
+          "Name": "Smoke",
+          "Scale": "10,10,10",
+          "Tags": "particles",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "Components": [
+            {
+              "__type": "ParticleEffect",
+              "Alpha": {
+                "Type": "Curve",
+                "CurveA": [
+                  {
+                    "in": -4.0000024,
+                    "out": 4.0000024
+                  },
+                  {
+                    "x": 0.20812808,
+                    "y": 0.475
+                  },
+                  {
+                    "x": 1
+                  }
+                ],
+                "Constants": "1,0,0,0"
+              },
+              "ApplyColor": true,
+              "ApplyRotation": true,
+              "ApplyShape": true,
+              "Bounce": {
+                "Constants": "1,0,0,0"
+              },
+              "Brightness": {
+                "Constants": "1,0,0,0"
+              },
+              "Bumpiness": {},
+              "Collision": false,
+              "CollisionRadius": 1,
+              "Damping": {
+                "Constants": "5,0,0,0"
+              },
+              "DieOnCollisionChance": {},
+              "Force": true,
+              "ForceDirection": "0,0,100",
+              "ForceScale": {
+                "Constants": "1,0,0,0"
+              },
+              "Friction": {
+                "Constants": "1,0,0,0"
+              },
+              "Gradient": {
+                "Type": "Range",
+                "Evaluation": "Particle",
+                "GradientA": {
+                  "color": [
+                    {
+                      "t": 0.5,
+                      "c": "1,1,1,1"
+                    }
+                  ],
+                  "alpha": []
+                },
+                "GradientB": {
+                  "color": [
+                    {
+                      "t": 0.5,
+                      "c": "1,1,1,1"
+                    }
+                  ],
+                  "alpha": []
+                },
+                "ConstantA": "0.18317,0.18317,0.18317,1",
+                "ConstantB": "1,1,1,1"
+              },
+              "Lifetime": {
+                "Type": "Range",
+                "Evaluation": "Particle",
+                "Constants": "1,2,0,0"
+              },
+              "MaxParticles": 5000,
+              "PerParticleTimeScale": {
+                "Constants": "1,0.4,0,0"
+              },
+              "PreWarm": 0,
+              "PushStrength": {},
+              "Roll": {
+                "Type": "Range",
+                "Evaluation": "Particle",
+                "Constants": "0,360,0,0"
+              },
+              "Scale": {
+                "Type": "Range",
+                "Evaluation": "Particle",
+                "CurveA": [
+                  {}
+                ],
+                "Constants": "10,20,0,0"
+              },
+              "SequenceId": {},
+              "SequenceSpeed": {
+                "Constants": "100,0,0,0"
+              },
+              "SequenceTime": {
+                "Constants": "1,0,0,0"
+              },
+              "SheetSequence": true,
+              "Space": "World",
+              "StartVelocity": {
+                "Type": "Range",
+                "Evaluation": "Particle",
+                "Constants": "10,70,0,0"
+              },
+              "Stretch": {},
+              "TimeScale": 0.76,
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "ParticleSpriteRenderer",
+              "Additive": false,
+              "BlurAmount": 0.5,
+              "BlurOpacity": 0.91,
+              "BlurSpacing": 0.73,
+              "DepthFeather": 0,
+              "FaceVelocity": false,
+              "FogStrength": 1,
+              "LeadingTrail": true,
+              "MotionBlur": false,
+              "Opaque": false,
+              "RotationOffset": 0,
+              "Scale": 1,
+              "Shadows": true,
+              "SortMode": "Unsorted",
+              "Texture": "materials/particle/base_sprite.vtex"
+            },
+            {
+              "__type": "ParticleSphereEmitter",
+              "Burst": 0,
+              "Delay": 0,
+              "DestroyOnEnd": false,
+              "Duration": 5,
+              "Loop": true,
+              "OnEdge": false,
+              "Radius": 11.23,
+              "Rate": 206.52,
+              "Velocity": 7.25
+            }
+          ]
         }
       ]
     }
@@ -365,6 +590,6 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-10T13:59:12.6802472\u002B01:00",
+  "LastSaved": "2024-03-13T03:13:41.8638633\u002B01:00",
   "__references": []
 }

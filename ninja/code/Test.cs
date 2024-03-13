@@ -1,6 +1,14 @@
 using Sandbox;
 using Sandbox.Citizen;
 using System.Net.Http;
+using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
+using System.Runtime;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
+using Sandbox.UI;
+using System.Numerics;
 
 
 
@@ -20,7 +28,15 @@ public sealed class Test : Component
 	[Property]
 	[Category( "Components" )]
 	public CitizenAnimationHelper Animator { get; set; }
-	
+
+	[Property]
+	public UnitInfo Unit { get; set; }
+
+	[Property]
+	public GameObject bullet { get; set; }
+
+		public Transform bulletSpawn;
+
 	// marche
 	[Property]
 	[Category( "Stats" )]
@@ -57,13 +73,19 @@ public sealed class Test : Component
 	// viseur
 	[Property]
 	public Vector3 EyePosition { get; set; }
+	public Vector3 EyeWorldPosition => Transform.Local.PointToWorld( EyePosition );
 
 	public Angles EyeAngles { get; set; }
+	public Angles viseur { get; set; }
 	Transform _initialCameraTransform;
 	TimeSince _LastPunch;
+	TimeSince _LastMissile;
 
 	public int slot;
 
+	bool isRightHand = true;
+
+	public Rotation cameraRotation;
 
 	// cone de la range de l'attaque
 	protected override void DrawGizmos()
@@ -73,7 +95,8 @@ public sealed class Test : Component
 		var draw = Gizmo.Draw;
 
 		draw.LineSphere( EyePosition, 10f) ;
-		draw.LineCylinder( EyePosition, EyePosition + Transform.Rotation.Forward * PunchRange, 5f, 50f, 10 );
+		draw.LineCylinder( EyePosition, EyePosition + Transform.Rotation.Forward * PunchRange, 5f, 5f, 10 );
+
 	}
 
 	// events qui se refresh
@@ -86,7 +109,6 @@ public sealed class Test : Component
 
 		if ( Camera != null)
 			Camera.Transform.Local = _initialCameraTransform.RotateAround( EyePosition, EyeAngles.WithYaw( 0f ) );
-
 
 	}
 
@@ -140,22 +162,22 @@ public sealed class Test : Component
 			Animator.WithVelocity( Controller.Velocity);
 		}
 
-		if ( _LastPunch >= 7f )
+		if ( _LastPunch >= 3f )
 			Animator.HoldType = CitizenAnimationHelper.HoldTypes.None;
 
 		if (Input.Pressed( "attack1" ) && _LastPunch >= PunchCooldown && slot == 1)
 			Punch();
 
 		if ( Input.Pressed( "attack1" ) && _LastPunch >= PunchCooldown && slot == 2 )
-			Sword();
+			Missile();
 	}
 
+	
 	protected override void OnStart()
 	{
+
 		if ( Camera != null )
 			_initialCameraTransform = Camera.Transform.Local;
-
-			//GameObject.Tags.Add( "Player" );
 
 	}
 
@@ -169,7 +191,7 @@ public sealed class Test : Component
 		}
 
 		var punchTrace = Scene.Trace
-			.FromTo( EyePosition, EyePosition + EyeAngles.Forward * PunchRange )
+			.FromTo( EyeWorldPosition, EyeWorldPosition + EyeAngles.Forward * PunchRange )
 			.Size( 10f )
 			.WithoutTags( "player" )
 			.IgnoreGameObjectHierarchy( GameObject )
@@ -187,30 +209,67 @@ public sealed class Test : Component
 		_LastPunch = 0f;
 	}
 
-	// Epee SLOT 2
-	public void Sword()
+	// Missile SLOT 2
+	public void Missile()
 	{
+					
+		if ( Unit.Mana >= 20 && Animator != null )
+		{
+
+			Unit.Mana -= 20;
+			Unit._lastMissile = 0f;
+
+				//lancer droite gauche
+				// Utilisez la variable isRightHand pour déterminer la main à utiliser
+				Animator.Handedness = isRightHand ? CitizenAnimationHelper.Hand.Right : CitizenAnimationHelper.Hand.Left;
+				Animator.HoldType = CitizenAnimationHelper.HoldTypes.HoldItem;
+				Animator.Target.Set( "b_attack", true );
+
+				// Inversez l'état de la main pour la prochaine fois
+				isRightHand = !isRightHand;
+
+			// Obtenez la rotation de la caméra
+			Rotation cameraRotation = Camera.Transform.Rotation;
+
+			// Calcul de la direction dans laquelle le joueur regarde
+			Vector3 direction = (Vector3.Forward * cameraRotation);
+
+
+
+
+			Vector3 playerPosition = Transform.Position;
+			//playerPosition.x += 20;
+			Vector3 offset = direction * 40; // 20 unités devant le joueur
+			playerPosition += offset;
+			playerPosition.z += 40;
+
+			Log.Info( Unit.Mana );
+
+
+			bullet.Clone( playerPosition );
+
+		}
+/*		//lancer droite gauche
 		if ( Animator != null )
 		{
+			// Utilisez la variable isRightHand pour déterminer la main à utiliser
+			Animator.Handedness = isRightHand ? CitizenAnimationHelper.Hand.Right : CitizenAnimationHelper.Hand.Left;
 			Animator.HoldType = CitizenAnimationHelper.HoldTypes.HoldItem;
 			Animator.Target.Set( "b_attack", true );
-		}
 
-		var punchTrace = Scene.Trace
-			.FromTo( EyePosition, EyePosition + EyeAngles.Forward * PunchRange )
-			.Size( 10f )
-			.WithoutTags( "player" )
-			.IgnoreGameObjectHierarchy( GameObject )
-			.Run();
+			// Inversez l'état de la main pour la prochaine fois
+			isRightHand = !isRightHand;
+		};*/
 
-		if ( punchTrace.Hit )
-		{
-			if ( punchTrace.GameObject.Components.TryGet<UnitInfo>( out var unitInfo ) )
-				unitInfo.Damage( PunchStrengh );
 
-			if ( punchTrace.GameObject.Components.TryGet<UnitInfoBot>( out var unitInfoBot ) )
-				unitInfoBot.Damage( PunchStrengh );
-		}
+		/*		if ( punchTrace.Hit )
+				{
+					if ( punchTrace.GameObject.Components.TryGet<UnitInfo>( out var unitInfo ) )
+						unitInfo.Damage( PunchStrengh );
+
+					if ( punchTrace.GameObject.Components.TryGet<UnitInfoBot>( out var unitInfoBot ) )
+						unitInfoBot.Damage( PunchStrengh );
+				}*/
 
 		_LastPunch = 0f;
 	}

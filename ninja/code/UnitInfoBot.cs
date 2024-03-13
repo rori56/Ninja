@@ -16,18 +16,18 @@ public sealed class UnitInfoBot : Component
 	public UnitType Team { get; set; }
 
 	[Property]
-	[Range( 0.1f, 10f, 0.1f )]
-	public float MaxHealth { get; set; } = 5f;
+	[Range( 0.1f, 100f, 0.1f )]
+	public float MaxHealth { get; set; } = 100f;
 
 	public float Health { get; private set; }
 
 	public bool Alive { get; private set; } = true;
 	TimeSince _lastDamage;
-	TimeUntil _nextHeal;
+	//TimeUntil _nextHeal;
 
 	protected override void OnUpdate()
 	{
-		Log.Info( Health );
+		base.OnUpdate();
 	}
 
 	protected override void OnStart()
