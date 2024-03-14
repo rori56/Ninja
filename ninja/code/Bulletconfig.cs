@@ -1,14 +1,9 @@
 using Sandbox;
 using System;
 using System.Runtime;
-using System.Collections;
-using System.Diagnostics;
 
-public sealed class Bulletconfig : Component
+public sealed class Bulletconfig : Component, Component.ICollisionListener
 {
-
-	//public Rigidbody bulletRigid = null;
-	//public Rigidbody bulletRigid = new Rigidbody();
 
 	public float bulletDespawn;
 
@@ -21,7 +16,11 @@ public sealed class Bulletconfig : Component
 
 	[Property] public Rigidbody bulletRigid { get; set; }
 
+	[Property]
+	public Test Player { get; set; }
+
 	public Rotation cameraRotation;
+
 
 	protected override void OnStart()
 	{
@@ -33,12 +32,34 @@ public sealed class Bulletconfig : Component
 			Vector3 cameraForward = cameraRotation.Forward;
 
 			bulletRigid.ApplyImpulse( cameraForward * bulletSpeed );
-			//bulletRigid.ApplyForce( Vector3.Forward * bulletSpeed * Time.Delta );
 		}
 		else
 		{
-			// Si bulletRigid est null, affichez un message 
-			Log.Info( "bulletRigid est null. Assurez-vous de l'initialiser correctement avant d'utiliser cette classe." );
+			Log.Info( "bulletRigid est null" );
 		}
 	}
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+	}
+
+	public void OnCollisionStart( Collision c )
+	{
+		if ( c.Other.Collider.Components.TryGet<UnitInfoBot>( out var unitInfoBot ) )
+			unitInfoBot.Damage( 50f );
+
+		GameObject.Destroy();
+
+	}
+
+
+	public void OnCollisionUpdate( Collision c )
+	{
+	}
+
+	public void OnCollisionStop( CollisionStop c )
+	{
+	}
+
 }

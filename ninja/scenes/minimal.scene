@@ -2,15 +2,15 @@
   "Id": "9f832399-4887-46b0-8f21-2ee284f538e2",
   "GameObjects": [
     {
-      "Id": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
+      "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
       "Name": "Sun",
       "Rotation": "-0.0729315,0.4822396,0.1305433,0.8631827",
       "Tags": "light_directional,light",
-      "Enabled": true,
       "NetworkMode": 2,
       "Components": [
         {
           "__type": "DirectionalLight",
+          "__guid": "bc1561f3-c54a-46a0-b233-8a4d01404e5d",
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "0.94419,0.97767,1,1",
@@ -20,7 +20,22 @@
       ]
     },
     {
-      "Id": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
+      "__guid": "8b5fd321-e281-46e4-ac84-c68d78533133",
+      "Name": "Map",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "MapInstance",
+          "__guid": "dcfb826a-fa3e-498a-a742-7f9e51b30d76",
+          "MapName": "droppod.wizard",
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
       "Name": "2D Skybox",
       "Tags": "skybox",
       "Enabled": true,
@@ -28,11 +43,13 @@
       "Components": [
         {
           "__type": "SkyBox2D",
+          "__guid": "d1c3db84-c218-46d7-9dbe-4c19c9a321f6",
           "SkyMaterial": "materials/skybox/light_test_sky_sunny03.vmat",
           "Tint": "1,1,1,1"
         },
         {
           "__type": "EnvmapProbe",
+          "__guid": "f0967acf-e61d-4db7-a055-3c575584b4a7",
           "Bounds": {
             "Mins": "-512,-512,-512",
             "Maxs": "512,512,512"
@@ -45,89 +62,23 @@
       ]
     },
     {
-      "Id": "6ad70641-3c6c-4402-9c85-9a4969af4764",
-      "Name": "Plane",
-      "Scale": "5.111068,5,5",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "Components": [
-        {
-          "__type": "ModelRenderer",
-          "BodyGroups": 18446744073709551615,
-          "MaterialOverride": "materials/default.vmat",
-          "Model": "models/dev/plane.vmdl",
-          "RenderType": "On",
-          "Tint": "0.39546,0.51163,0.27128,1"
-        },
-        {
-          "__type": "BoxCollider",
-          "Center": "0,0,-5",
-          "IsTrigger": false,
-          "Scale": "99.99989,99.99998,10",
-          "Static": false
-        },
-        {
-          "__type": "BoxCollider",
-          "Center": "0,0,-5",
-          "IsTrigger": false,
-          "Scale": "100,100,8.29993",
-          "Static": false
-        }
-      ]
-    },
-    {
-      "Id": "3c2490ef-54a0-49bb-8f13-490e40aa51d1",
-      "Name": "Cube",
-      "Position": "-44.82336,166.8376,59.19331",
-      "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
-      "Scale": "5.502284,0.5632889,2.169432",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "Components": [
-        {
-          "__type": "ModelRenderer",
-          "BodyGroups": 18446744073709551615,
-          "MaterialOverride": "materials/default.vmat",
-          "Model": "models/dev/box.vmdl",
-          "RenderType": "On",
-          "Tint": "1,0,0.93333,1"
-        },
-        {
-          "__type": "BoxCollider",
-          "Center": "0,0,0",
-          "IsTrigger": false,
-          "Scale": "50,50,50",
-          "Static": false
-        },
-        {
-          "__type": "Rigidbody",
-          "AngularDamping": 0,
-          "Gravity": true,
-          "LinearDamping": 0,
-          "Locking": {},
-          "MassOverride": 0,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        }
-      ]
-    },
-    {
-      "Id": "624c9f80-169c-4904-9028-ab6ce1753dbe",
+      "__guid": "624c9f80-169c-4904-9028-ab6ce1753dbe",
       "Name": "Object",
       "Position": "270.8246,-157.3278,260.7148",
       "Enabled": true,
       "NetworkMode": 2
     },
     {
-      "Id": "9efe6cbd-5d8a-496f-8775-d5dc13dae34b",
+      "__guid": "9efe6cbd-5d8a-496f-8775-d5dc13dae34b",
       "Name": "Player",
-      "Position": "0,0,40.51105",
+      "Position": "0,-270.626,12.93439",
       "Tags": "player",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
         {
           "__type": "SkinnedModelRenderer",
+          "__guid": "e24070a2-4d04-428a-ae36-8270bb184c50",
           "BodyGroups": 341,
           "CreateBoneObjects": false,
           "MaterialGroup": "default",
@@ -137,6 +88,7 @@
         },
         {
           "__type": "CharacterController",
+          "__guid": "fc12433a-01df-4fe5-88c0-a89f2dd9c64a",
           "Acceleration": 10,
           "Bounciness": 0.3,
           "GroundAngle": 45,
@@ -147,6 +99,7 @@
         },
         {
           "__type": "CitizenAnimationHelper",
+          "__guid": "959b6476-96e3-4a3d-954c-05156492f3cc",
           "BodyWeight": 1,
           "EyesWeight": 1,
           "HeadWeight": 1,
@@ -154,14 +107,17 @@
           "LookAtEnabled": false,
           "Target": {
             "_type": "component",
+            "component_id": "e24070a2-4d04-428a-ae36-8270bb184c50",
             "go": "9efe6cbd-5d8a-496f-8775-d5dc13dae34b",
             "component_type": "SkinnedModelRenderer"
           }
         },
         {
           "__type": "Test",
+          "__guid": "7a7cd230-b5e4-4ccd-8a8b-61f5aacfbfa0",
           "Animator": {
             "_type": "component",
+            "component_id": "959b6476-96e3-4a3d-954c-05156492f3cc",
             "go": "9efe6cbd-5d8a-496f-8775-d5dc13dae34b",
             "component_type": "CitizenAnimationHelper"
           },
@@ -175,6 +131,7 @@
           },
           "Controller": {
             "_type": "component",
+            "component_id": "fc12433a-01df-4fe5-88c0-a89f2dd9c64a",
             "go": "9efe6cbd-5d8a-496f-8775-d5dc13dae34b",
             "component_type": "CharacterController"
           },
@@ -186,6 +143,7 @@
           "RunSpeed": 250,
           "Unit": {
             "_type": "component",
+            "component_id": "e2b3d72f-0c46-4b69-976d-142f70b7ed73",
             "go": "9efe6cbd-5d8a-496f-8775-d5dc13dae34b",
             "component_type": "UnitInfo"
           },
@@ -193,6 +151,7 @@
         },
         {
           "__type": "UnitInfo",
+          "__guid": "e2b3d72f-0c46-4b69-976d-142f70b7ed73",
           "HealthRegenAmount": 1,
           "HealthRegenTimer": 3,
           "ManaRegenAmount": 20,
@@ -203,6 +162,7 @@
         },
         {
           "__type": "ModelCollider",
+          "__guid": "a226e0b0-4699-48cf-bef0-6949aa20d70c",
           "IsTrigger": false,
           "Model": "models/citizen/citizen.vmdl",
           "Static": false
@@ -210,15 +170,16 @@
       ],
       "Children": [
         {
-          "Id": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
+          "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
           "Name": "Camera",
-          "Position": "-189.3463,0,126.7318",
+          "Position": "-200,0,135",
           "Rotation": "0.00000003902482,0.1693495,0.00000001401043,0.9855561",
           "Enabled": true,
           "NetworkMode": 2,
           "Components": [
             {
               "__type": "CameraComponent",
+              "__guid": "699d8b6e-3bbb-46ae-914e-75224730a7ed",
               "BackgroundColor": "0.33333,0.46275,0.52157,1",
               "ClearFlags": "All",
               "FieldOfView": 60,
@@ -235,6 +196,7 @@
             },
             {
               "__type": "Bloom",
+              "__guid": "229ef476-8618-48c8-8eed-9441cc39b3af",
               "BloomColor": {
                 "color": [
                   {
@@ -263,6 +225,7 @@
             },
             {
               "__type": "Tonemapping",
+              "__guid": "660178e9-ce06-4c58-a8bb-3e85e90c7104",
               "ExposureCompensation": 0,
               "MaximumExposure": 2,
               "MinimumExposure": 1,
@@ -270,6 +233,7 @@
             },
             {
               "__type": "Sharpen",
+              "__guid": "9509bb09-3a58-4b78-be80-46dbad0f6eca",
               "Scale": 0.2
             }
           ]
@@ -277,14 +241,15 @@
       ]
     },
     {
-      "Id": "8d2b0890-8eb1-4879-afc2-268d32edf522",
+      "__guid": "8d2b0890-8eb1-4879-afc2-268d32edf522",
       "Name": "Bot",
-      "Position": "83.43043,0,30.70387",
+      "Position": "-283.3224,0,30.70387",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
         {
           "__type": "SkinnedModelRenderer",
+          "__guid": "b137aa18-e85e-42f7-9898-9e09fad5cb05",
           "AnimationGraph": "models/citizen/citizen.vanmgrph",
           "BodyGroups": 341,
           "CreateBoneObjects": false,
@@ -295,6 +260,7 @@
         },
         {
           "__type": "CharacterController",
+          "__guid": "0830681d-7df3-4ed4-abe9-8c0ed1b6b47e",
           "Acceleration": 10,
           "Bounciness": 0.3,
           "GroundAngle": 45,
@@ -305,6 +271,7 @@
         },
         {
           "__type": "CitizenAnimationHelper",
+          "__guid": "00471123-916e-4183-971e-cf0260a12bfd",
           "BodyWeight": 1,
           "EyesWeight": 1,
           "HeadWeight": 1,
@@ -312,20 +279,24 @@
           "LookAtEnabled": false,
           "Target": {
             "_type": "component",
+            "component_id": "b137aa18-e85e-42f7-9898-9e09fad5cb05",
             "go": "8d2b0890-8eb1-4879-afc2-268d32edf522",
             "component_type": "SkinnedModelRenderer"
           }
         },
         {
           "__type": "ModelCollider",
+          "__guid": "cda7f687-6baa-49d6-b7f4-06098c8073f6",
           "IsTrigger": false,
           "Model": "models/citizen/citizen.vmdl",
           "Static": false
         },
         {
           "__type": "Test2",
+          "__guid": "cb1954f5-7505-4665-a310-11efe4dc09a9",
           "Animator": {
             "_type": "component",
+            "component_id": "00471123-916e-4183-971e-cf0260a12bfd",
             "go": "8d2b0890-8eb1-4879-afc2-268d32edf522",
             "component_type": "CitizenAnimationHelper"
           },
@@ -339,13 +310,90 @@
         },
         {
           "__type": "UnitInfoBot",
+          "__guid": "25c96394-fb64-4b65-bf02-7cf4405131a6",
           "MaxHealth": 100,
           "Team": "None"
         }
       ]
     },
     {
-      "Id": "04d92bb2-9183-4afe-b8b6-04ad33eeeb6b",
+      "__guid": "33a6551c-ae48-45fc-acc9-2b7e57b2ce82",
+      "Name": "Bot (1)",
+      "Position": "-250.5049,65.85799,30.70387",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "SkinnedModelRenderer",
+          "__guid": "f4b1b2d8-6584-490c-aa77-a5492c120f03",
+          "AnimationGraph": "models/citizen/citizen.vanmgrph",
+          "BodyGroups": 341,
+          "CreateBoneObjects": false,
+          "MaterialGroup": "default",
+          "Model": "models/citizen/citizen.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "CharacterController",
+          "__guid": "8915aae4-8401-4254-a3a4-19c432750430",
+          "Acceleration": 10,
+          "Bounciness": 0.3,
+          "GroundAngle": 45,
+          "Height": 64,
+          "IgnoreLayers": "",
+          "Radius": 16,
+          "StepHeight": 18
+        },
+        {
+          "__type": "CitizenAnimationHelper",
+          "__guid": "92ddb2bf-2fcc-4c71-965b-ad6c40185332",
+          "BodyWeight": 1,
+          "EyesWeight": 1,
+          "HeadWeight": 1,
+          "Height": 1,
+          "LookAtEnabled": false,
+          "Target": {
+            "_type": "component",
+            "component_id": "f4b1b2d8-6584-490c-aa77-a5492c120f03",
+            "go": "33a6551c-ae48-45fc-acc9-2b7e57b2ce82",
+            "component_type": "SkinnedModelRenderer"
+          }
+        },
+        {
+          "__type": "ModelCollider",
+          "__guid": "226f6762-d249-42dd-b86a-2c236c1c024e",
+          "IsTrigger": false,
+          "Model": "models/citizen/citizen.vmdl",
+          "Static": false
+        },
+        {
+          "__type": "Test2",
+          "__guid": "f54834c4-0f3a-4751-bb7f-4d014486968e",
+          "Animator": {
+            "_type": "component",
+            "component_id": "92ddb2bf-2fcc-4c71-965b-ad6c40185332",
+            "go": "33a6551c-ae48-45fc-acc9-2b7e57b2ce82",
+            "component_type": "CitizenAnimationHelper"
+          },
+          "EyePosition": "0,0,0",
+          "JumpStrengh": 400,
+          "PunchCooldown": 0.5,
+          "PunchRange": 50,
+          "PunchStrengh": 1,
+          "RunSpeed": 250,
+          "WalkSpeed": 120
+        },
+        {
+          "__type": "UnitInfoBot",
+          "__guid": "b3f5784b-2e7a-432c-aa3c-da8f89b0b93a",
+          "MaxHealth": 100,
+          "Team": "None"
+        }
+      ]
+    },
+    {
+      "__guid": "04d92bb2-9183-4afe-b8b6-04ad33eeeb6b",
       "Name": "Screen",
       "Position": "150.561,-13.28921,12.88091",
       "Enabled": true,
@@ -353,6 +401,7 @@
       "Components": [
         {
           "__type": "ScreenPanel",
+          "__guid": "c30f5ebe-65f2-43eb-85ca-a0725bfb4a67",
           "AutoScreenScale": true,
           "Opacity": 1,
           "Scale": 1,
@@ -360,8 +409,10 @@
         },
         {
           "__type": "Hud",
+          "__guid": "56febdb3-d704-4f6b-a6e9-27ad4f2685f0",
           "Player": {
             "_type": "component",
+            "component_id": "e2b3d72f-0c46-4b69-976d-142f70b7ed73",
             "go": "9efe6cbd-5d8a-496f-8775-d5dc13dae34b",
             "component_type": "UnitInfo"
           }
@@ -369,15 +420,16 @@
       ]
     },
     {
-      "Id": "e93d1517-f170-4373-ada6-93de8d271396",
+      "__guid": "e93d1517-f170-4373-ada6-93de8d271396",
       "Name": "bullet",
+      "Position": "0,0,6.62237",
       "Scale": "0.1,0.1,0.1",
       "Tags": "bullet,particles",
-      "Enabled": true,
       "NetworkMode": 2,
       "Components": [
         {
           "__type": "ModelRenderer",
+          "__guid": "318889fc-3398-4b6d-b8b9-7a5b7487444a",
           "BodyGroups": 18446744073709551615,
           "Model": "models/dev/sphere.vmdl",
           "RenderType": "On",
@@ -385,6 +437,7 @@
         },
         {
           "__type": "SphereCollider",
+          "__guid": "7aa415fd-4e9e-40ce-a81a-0445541c4362",
           "Center": "0,0,0",
           "IsTrigger": false,
           "Radius": 30,
@@ -392,18 +445,22 @@
         },
         {
           "__type": "Rigidbody",
+          "__guid": "23b49fda-c23b-424f-b729-c752b4e44d20",
           "AngularDamping": 0,
           "Gravity": false,
           "LinearDamping": 0,
           "Locking": {},
           "MassOverride": 0,
+          "MotionEnabled": true,
           "RigidbodyFlags": 0,
           "StartAsleep": false
         },
         {
           "__type": "Bulletconfig",
+          "__guid": "a7d20f22-c59c-4fe9-b624-bbe2b773a0e9",
           "bulletRigid": {
             "_type": "component",
+            "component_id": "23b49fda-c23b-424f-b729-c752b4e44d20",
             "go": "e93d1517-f170-4373-ada6-93de8d271396",
             "component_type": "Rigidbody"
           },
@@ -411,20 +468,27 @@
           "Camera": {
             "_type": "gameobject",
             "go": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a"
+          },
+          "Player": {
+            "_type": "component",
+            "component_id": "7a7cd230-b5e4-4ccd-8a8b-61f5aacfbfa0",
+            "go": "9efe6cbd-5d8a-496f-8775-d5dc13dae34b",
+            "component_type": "Test"
           }
         }
       ],
       "Children": [
         {
-          "Id": "c6504840-75a4-4ca4-ac1b-fe74efb93112",
+          "__guid": "c6504840-75a4-4ca4-ac1b-fe74efb93112",
           "Name": "Smoke",
+          "Position": "0,0,0",
           "Scale": "10,10,10",
-          "Tags": "particles",
           "Enabled": true,
           "NetworkMode": 2,
           "Components": [
             {
               "__type": "ParticleEffect",
+              "__guid": "a3741b47-fffb-4aeb-bc2b-5873dacfeca1",
               "Alpha": {
                 "Type": "Curve",
                 "CurveA": [
@@ -534,6 +598,7 @@
             },
             {
               "__type": "ParticleSpriteRenderer",
+              "__guid": "39ad3796-64aa-4e6e-9c89-f38d6f19e039",
               "Additive": false,
               "BlurAmount": 0.5,
               "BlurOpacity": 0.91,
@@ -552,6 +617,7 @@
             },
             {
               "__type": "ParticleSphereEmitter",
+              "__guid": "bd683e9f-d870-4408-bc65-9931b3d97be3",
               "Burst": 0,
               "Delay": 0,
               "DestroyOnEnd": false,
@@ -590,6 +656,6 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-13T03:13:41.8638633\u002B01:00",
+  "LastSaved": "2024-03-14T13:15:18.2386622\u002B01:00",
   "__references": []
 }

@@ -1,0 +1,45 @@
+{
+  "Id": "28e4f8b6-faed-4c0d-b691-b6b3697c3a25",
+  "GameObjects": [
+    {
+      "__guid": "b34dbe8c-93ca-43d3-9a52-5edbdfa7550a",
+      "Name": "Map",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "MapInstance",
+          "__guid": "f35913c2-df42-4167-8cba-3daffdd2a02a",
+          "MapName": "droppod.wizard",
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "Lerping": true,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "map1",
+  "Description": "",
+  "LastSaved": "2024-03-14T04:07:54.997952\u002B01:00",
+  "__references": []
+}

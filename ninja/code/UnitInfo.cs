@@ -69,7 +69,7 @@ public sealed class UnitInfo : Component
 			{
 				Log.Info( _lastMissile );
 				Regen( ManaRegenAmount );
-				_nextMana = 5f;
+				_nextMana = 1f;
 			}
 		}
 	}

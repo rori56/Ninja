@@ -46,6 +46,8 @@ public sealed class UnitInfoBot : Component
 
 		if ( Health <= 0 )
 			Krill();
+
+		Log.Info( Health );
 	}
 
 	public void Krill()

@@ -165,10 +165,10 @@ public sealed class Test : Component
 		if ( _LastPunch >= 3f )
 			Animator.HoldType = CitizenAnimationHelper.HoldTypes.None;
 
-		if (Input.Pressed( "attack1" ) && _LastPunch >= PunchCooldown && slot == 1)
+		if (Input.Down( "attack1" ) && _LastPunch >= PunchCooldown && slot == 1)
 			Punch();
 
-		if ( Input.Pressed( "attack1" ) && _LastPunch >= PunchCooldown && slot == 2 )
+		if ( Input.Down( "attack1" ) && _LastPunch >= PunchCooldown && slot == 2 )
 			Missile();
 	}
 
