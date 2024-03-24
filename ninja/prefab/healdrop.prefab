@@ -1,0 +1,41 @@
+{
+  "RootObject": {
+    "__guid": "7b25c139-0868-419c-ae15-9bb721b262b7",
+    "Name": "healdrop",
+    "Scale": "2,2,2",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "Components": [
+      {
+        "__type": "ModelRenderer",
+        "__guid": "aa0e7769-1651-4423-8ee6-bed691bbdf7d",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/sbox_props/burger_box/burger_box.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "HealDrop",
+        "__guid": "7ca821a1-e883-4b7c-8d4c-4a4f91338882",
+        "rotationSpeed": 70
+      },
+      {
+        "__type": "BoxCollider",
+        "__guid": "95f37536-7975-41cc-bd74-aa624ccba868",
+        "Center": "0,0,0",
+        "IsTrigger": true,
+        "Scale": "8,8,8",
+        "Static": false
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
+  "__references": [
+    "facepunch.burger_box"
+  ]
+}

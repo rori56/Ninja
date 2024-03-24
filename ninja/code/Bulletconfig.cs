@@ -2,13 +2,10 @@ using Sandbox;
 using System;
 using System.Runtime;
 
-public sealed class Bulletconfig : Component, Component.ICollisionListener
+public sealed class Bulletconfig : Component, Component.ICollisionListener, Component.ITriggerListener
 {
 
 	public float bulletDespawn;
-
-	[Property]
-	public GameObject Camera { get; set; }
 
 	[Property]
 	[Range( 0f, 10000f, 100f )]
@@ -19,24 +16,20 @@ public sealed class Bulletconfig : Component, Component.ICollisionListener
 	[Property]
 	public Test Player { get; set; }
 
-	public Rotation cameraRotation;
 
+
+	//public Rotation cameraRotation;
+	public Vector3 cameraForward;
+
+	private bool hasCollided = false;
 
 	protected override void OnStart()
 	{
 
-		if ( bulletRigid != null )
-		{
+		//Vector3 cameraForward = Player.cameraForward;
+		//Log.Info( Player.cameraForward );
 
-			Rotation cameraRotation = Camera.Transform.Rotation;
-			Vector3 cameraForward = cameraRotation.Forward;
-
-			bulletRigid.ApplyImpulse( cameraForward * bulletSpeed );
-		}
-		else
-		{
-			Log.Info( "bulletRigid est null" );
-		}
+		bulletRigid.ApplyImpulse( Player.cameraForward * bulletSpeed );
 	}
 
 	protected override void OnUpdate()
@@ -46,20 +39,29 @@ public sealed class Bulletconfig : Component, Component.ICollisionListener
 
 	public void OnCollisionStart( Collision c )
 	{
-		if ( c.Other.Collider.Components.TryGet<UnitInfoBot>( out var unitInfoBot ) )
-			unitInfoBot.Damage( 50f );
+				if ( !hasCollided )
+				{
+					if ( c.Other.Collider.Components.TryGet<UnitInfoBot>( out var unitInfoBot ) )
+					{
+						unitInfoBot.Damage( 50f );
+					}
+					if ( c.Other.Collider.Components.TryGet<UnitInfo>( out var unitInfo ) )
+					{
+						unitInfo.Damage( 50f );
+					}
+				}
 
+				hasCollided = true;
+				GameObject.Destroy();
+
+			}
+	
+	public void OnTriggerEnter( Collider other )
+	{
 		GameObject.Destroy();
-
 	}
 
-
-	public void OnCollisionUpdate( Collision c )
+	public void OnTriggerExit( Collider other )
 	{
 	}
-
-	public void OnCollisionStop( CollisionStop c )
-	{
-	}
-
 }

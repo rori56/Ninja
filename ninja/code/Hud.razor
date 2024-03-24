@@ -3,6 +3,7 @@
 @inherits PanelComponent
 
 <root>
+
 	<div class="vitals">
 		<p>@Player.Health</p>
 	</div>
@@ -13,6 +14,7 @@
 					<div class="fill" style="width: @(Player.Health / Player.MaxHealth * 100f)%"</div>
 				</div>
 		</div>
+
 		<div class="manabar">
 			<div class="inner">
 				<div class="fill" style="width: @(Player.Mana / Player.MaxMana * 100f)%"</div>
@@ -20,16 +22,30 @@
 		</div>
 	</div>
 
+	@if ( inventaire.slot == 1 )
+	{
+		<div class="fist">
+			<div><img src="icons/fist.png"></div>
+		</div>
+	}
+	@if ( inventaire.slot == 2 )
+	{
+			<div class="magic">
+				<div><img src="icons/magic.png"></div>
+			</div>
+	}
 </root>
 
 @code
 {
 
 	[Property] UnitInfo Player { get; set; }
+	[Property] Test MetaPlayer { get; set; }
+	[Property] Inventory inventaire { get; set; }
 
 	protected override int BuildHash()
 	{
-		return System.HashCode.Combine( Player.Health, Player.Mana );
+		return System.HashCode.Combine(Player.Health, Player.Mana, inventaire.slot );
 	}
 
 }

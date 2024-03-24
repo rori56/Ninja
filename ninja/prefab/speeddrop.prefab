@@ -1,0 +1,41 @@
+{
+  "RootObject": {
+    "__guid": "8bd0a4b5-aed8-4412-a7c0-f424f0654f84",
+    "Name": "speeddrop",
+    "Scale": "1.5,1.5,1.5",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "Components": [
+      {
+        "__type": "ModelRenderer",
+        "__guid": "d0664a9d-2b9b-4abe-bd3c-7b2ddee6f4b0",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/sbox_props/cola_can/cola_can.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "BoxCollider",
+        "__guid": "3cbd4984-dd66-4927-a241-1b3449e171eb",
+        "Center": "0,0,0",
+        "IsTrigger": true,
+        "Scale": "8,8,8",
+        "Static": false
+      },
+      {
+        "__type": "SpeedDrop",
+        "__guid": "3dea6b6c-78e0-470d-8ed9-69ed4d06aa3d",
+        "rotationSpeed": 100
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
+  "__references": [
+    "facepunch.soda_can"
+  ]
+}

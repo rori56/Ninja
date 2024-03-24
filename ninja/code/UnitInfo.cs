@@ -50,6 +50,7 @@ public sealed class UnitInfo : Component
 	TimeSince _lastDamage;
 	TimeUntil _nextHeal;
 	TimeUntil _nextMana;
+	public TimeSince _lastShield;
 
 	protected override void OnUpdate()
 	{
@@ -59,18 +60,28 @@ public sealed class UnitInfo : Component
 			{
 				Damage( -HealthRegenAmount );
 				_nextHeal = 1f;
-				Log.Info( Health );
+				//Log.Info( Health );
 			}
 		}
 
-		if ( _lastMissile >= ManaRegenTimer && Mana != MaxMana && Alive )
+		if ( _lastShield >= ManaRegenTimer && _lastMissile >= ManaRegenTimer && Mana != MaxMana && Alive )
 		{
 			if ( _nextMana )
 			{
-				Log.Info( _lastMissile );
+				//Log.Info( _lastMissile );
 				Regen( ManaRegenAmount );
 				_nextMana = 1f;
 			}
+		}
+
+		if ( Health > MaxHealth )
+		{
+			Health = MaxHealth;
+		}
+
+		if ( Mana > MaxMana )
+		{
+			Mana = MaxMana;
 		}
 	}
 
@@ -97,6 +108,13 @@ public sealed class UnitInfo : Component
 	{
 		if ( !Alive ) return;
 			Mana = MathX.Clamp( Mana + regen, 0f, MaxMana );
+
+	}
+
+	public void healDrop( float regen )
+	{
+		if ( !Alive ) return;
+		Health += 50f;
 
 	}
 

@@ -28,6 +28,7 @@ public sealed class UnitInfoBot : Component
 	protected override void OnUpdate()
 	{
 		base.OnUpdate();
+		//Log.Info( Health );
 	}
 
 	protected override void OnStart()
@@ -46,8 +47,6 @@ public sealed class UnitInfoBot : Component
 
 		if ( Health <= 0 )
 			Krill();
-
-		Log.Info( Health );
 	}
 
 	public void Krill()
